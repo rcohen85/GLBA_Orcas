@@ -54,7 +54,7 @@ inDir = 'P:/users/cohen_rebecca_rec297/GLBA_Orcas/Detections'
  # Visualize diel patterns
  hist(bigTab$NToD,breaks=linspace(-1,1,25))
 
- # Bin calls to hourly resolution
+ # Bin calls to hourly resolution - use a different bin length?
  hourBins = seq.POSIXt(from=ceiling_date(bigTab$CallTimes[1],unit='hour'),
                      to=floor_date(bigTab$CallTimes[length(bigTab$CallTimes)],unit='hour'),
                      by=3600)
@@ -64,6 +64,10 @@ inDir = 'P:/users/cohen_rebecca_rec297/GLBA_Orcas/Detections'
  
  # Visualize timeseries of presence
  plot(whichBin$cnt,type="p")
+ 
+ # Investigate temporal autocorrelation
+ acf()
+ pacf()
  
  # Model presence as a response to day of year
  
